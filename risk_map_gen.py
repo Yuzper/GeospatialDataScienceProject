@@ -132,9 +132,6 @@ def main():
         for road, weight in zip(df_filtered['road_name'], df_filtered['vis_weight']):
             if not math.isnan(weight):
                 road_risk_weight[road] += weight
-                if road == 'Santa Monica Freeway':
-                    print('Road:', road, 'Weight:', weight, 'Total:', road_risk_weight[road])
-        
         # Normalize risk scores between 0 and 1
         max_weight = max(road_risk_weight.values(), default=1.0)
         road_risk_score = {

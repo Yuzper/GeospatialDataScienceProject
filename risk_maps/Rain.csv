@@ -1,51 +1,51 @@
 road_name,risk_score
-Noakes Street,1.0
-Hollywood Freeway,0.9230769230769231
-Harbor Freeway,0.6153846153846154
-Imperial Highway,0.46153846153846156
-San Diego Freeway,0.38461538461538464
-Santa Monica Freeway,0.38461538461538464
-Unnamed Road,0.3076923076923077
-Pomona Freeway,0.3076923076923077
-Santa Ana Freeway,0.3076923076923077
-South Indiana Street,0.23076923076923078
-Arroyo Seco Parkway,0.23076923076923078
-South Central Avenue,0.23076923076923078
-South Vermont Avenue,0.23076923076923078
-Harbor Transitway,0.23076923076923078
-West Imperial Highway,0.15384615384615385
-Zoo Drive North,0.15384615384615385
-Golden State Freeway,0.15384615384615385
-Fortuna Street,0.15384615384615385
-Century Freeway,0.15384615384615385
-East Slauson Avenue,0.15384615384615385
-Broadway,0.15384615384615385
-South La Cienega Boulevard,0.07692307692307693
-West Washington Boulevard,0.07692307692307693
-Santa Monica Boulevard,0.07692307692307693
-Los Feliz Boulevard,0.07692307692307693
-West Florence Avenue,0.07692307692307693
-North Vermont Avenue,0.07692307692307693
-West 6th Street,0.07692307692307693
-East Washington Boulevard,0.07692307692307693
-Veteran Avenue,0.07692307692307693
-Overland Avenue,0.07692307692307693
-Skirball Center Drive,0.07692307692307693
-Center Street,0.07692307692307693
-Mission Road,0.07692307692307693
-East 120th Street,0.07692307692307693
-West Vernon Avenue,0.07692307692307693
-North Normandie Avenue,0.07692307692307693
-San Bernardino Freeway,0.07692307692307693
-East Olympic Boulevard,0.07692307692307693
-South Halldale Avenue,0.07692307692307693
-West 106th Street,0.07692307692307693
-South Church Lane,0.07692307692307693
-West 7th Street,0.07692307692307693
-West 47th Street,0.07692307692307693
-Ohio Avenue,0.07692307692307693
-West Temple Street,0.07692307692307693
-North New Hampshire Avenue,0.07692307692307693
-Ventura Freeway,0.07692307692307693
-North Grand Avenue,0.07692307692307693
-Bridewell Street,0.07692307692307693
+Hollywood Freeway,1.0
+Noakes Street,0.96875
+Imperial Highway,0.75
+Santa Ana Freeway,0.34375
+San Diego Freeway,0.3125
+Harbor Freeway,0.3125
+Santa Monica Freeway,0.28125
+Century Freeway,0.25
+Golden State Freeway,0.1875
+Arroyo Seco Parkway,0.1875
+Overland Avenue,0.1875
+North Grand Avenue,0.1875
+Harbor Transitway,0.15625
+South Indiana Street,0.15625
+Ventura Freeway,0.15625
+Unnamed Road,0.125
+Pomona Freeway,0.125
+West Temple Street,0.125
+South La Cienega Boulevard,0.09375
+West Washington Boulevard,0.09375
+Fortuna Street,0.09375
+San Bernardino Freeway,0.09375
+East Olympic Boulevard,0.09375
+South Vermont Avenue,0.09375
+South Central Avenue,0.09375
+6th Street,0.0625
+Broadway,0.0625
+West Vernon Avenue,0.0625
+West Imperial Highway,0.0625
+East Slauson Avenue,0.0625
+West Florence Avenue,0.03125
+East Washington Boulevard,0.03125
+Los Feliz Boulevard,0.03125
+Santa Monica Boulevard,0.03125
+North Vermont Avenue,0.03125
+Mission Road,0.03125
+Center Street,0.03125
+Zoo Drive North,0.03125
+Veteran Avenue,0.03125
+Skirball Center Drive,0.03125
+North Normandie Avenue,0.03125
+East 120th Street,0.03125
+West 106th Street,0.03125
+South Halldale Avenue,0.03125
+South Church Lane,0.03125
+West 7th Street,0.03125
+Ohio Avenue,0.03125
+West 47th Street,0.03125
+North New Hampshire Avenue,0.03125
+Bridewell Street,0.03125
