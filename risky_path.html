@@ -1,0 +1,1415 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_8d142c0b2f728b20cbfaceb40bab30cd {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="position: fixed; 
+                top: 30px; left: 30px; width: 250px; height: 80px; 
+                background-color: white; z-index:9999; font-size:14px;
+                border:2px solid grey; padding: 10px;">
+    <b>Route Time Estimates</b><br>
+    <span style='color:black;'>Safest route: </span>4.3 min<br>
+    <span style='color:blue;'>Fastest route: </span>3.9 min
+    </div>
+    
+    
+    <div style="position: fixed; 
+                bottom: 30px; left: 30px; width: 150px; height: 100px; 
+                background-color: white; z-index:9999; font-size:14px;
+                border:2px solid grey; padding: 10px;">
+    <b>Risk Level</b><br>
+    <span style="color:#00ff00;">●</span> Low<br>
+    <span style="color:#ffff00;">●</span> Medium<br>
+    <span style="color:#ff0000;">●</span> High
+    </div>
+    
+    
+            <div class="folium-map" id="map_8d142c0b2f728b20cbfaceb40bab30cd" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_8d142c0b2f728b20cbfaceb40bab30cd = L.map(
+                "map_8d142c0b2f728b20cbfaceb40bab30cd",
+                {
+                    center: [33.974801, -118.279684],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_dac57b563e4199e61331cb1802f98021 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_dac57b563e4199e61331cb1802f98021.addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+            var poly_line_05f6e958c90b2a30b0ef7cdcfb48aa23 = L.polyline(
+                [[33.9746526, -118.2802733], [33.9747999, -118.280274], [33.9750384, -118.2802755]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_0c3008c44eb71f3e469b4de2b03636c7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_39ac3f0326f39697b18bb9265d6f6648 = $(`<div id="html_39ac3f0326f39697b18bb9265d6f6648" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_0c3008c44eb71f3e469b4de2b03636c7.setContent(html_39ac3f0326f39697b18bb9265d6f6648);
+            
+        
+
+        poly_line_05f6e958c90b2a30b0ef7cdcfb48aa23.bindPopup(popup_0c3008c44eb71f3e469b4de2b03636c7)
+        ;
+
+        
+    
+    
+            var poly_line_971a6d052bf0e235f72b9c4eb82a7e43 = L.polyline(
+                [[33.9750384, -118.2802755], [33.9751308, -118.2802561], [33.9753107, -118.2802184], [33.9754824, -118.2802054], [33.975614, -118.280207]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_714b3e7ffda070a1a86b983e5be9b37e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a90877bab5a4904a5e5d99bb1770ffaa = $(`<div id="html_a90877bab5a4904a5e5d99bb1770ffaa" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_714b3e7ffda070a1a86b983e5be9b37e.setContent(html_a90877bab5a4904a5e5d99bb1770ffaa);
+            
+        
+
+        poly_line_971a6d052bf0e235f72b9c4eb82a7e43.bindPopup(popup_714b3e7ffda070a1a86b983e5be9b37e)
+        ;
+
+        
+    
+    
+            var poly_line_29c9110eba1c35f0c81ff9eab371c1bc = L.polyline(
+                [[33.975614, -118.280207], [33.9760355, -118.2802202], [33.9764941, -118.2802346]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_31e0c2ac330e072dca3c715a63d7c9fa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cefcdc6f5bb69bf7932b3fe6045737d4 = $(`<div id="html_cefcdc6f5bb69bf7932b3fe6045737d4" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_31e0c2ac330e072dca3c715a63d7c9fa.setContent(html_cefcdc6f5bb69bf7932b3fe6045737d4);
+            
+        
+
+        poly_line_29c9110eba1c35f0c81ff9eab371c1bc.bindPopup(popup_31e0c2ac330e072dca3c715a63d7c9fa)
+        ;
+
+        
+    
+    
+            var poly_line_52274a906616ae7b948a8604be436d68 = L.polyline(
+                [[33.9764941, -118.2802346], [33.9769413, -118.2802819], [33.977354, -118.2803372]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_b01602cc6555b31dec928a029abfbd9e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f26e13b98e5a8debc99fae84a659790b = $(`<div id="html_f26e13b98e5a8debc99fae84a659790b" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_b01602cc6555b31dec928a029abfbd9e.setContent(html_f26e13b98e5a8debc99fae84a659790b);
+            
+        
+
+        poly_line_52274a906616ae7b948a8604be436d68.bindPopup(popup_b01602cc6555b31dec928a029abfbd9e)
+        ;
+
+        
+    
+    
+            var poly_line_b02c98c6ca5b9f05044877a04b3b361c = L.polyline(
+                [[33.977354, -118.2803372], [33.9774632, -118.2803446], [33.977766, -118.2803487], [33.9781766, -118.2803486]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_c49e3580caa4b9124783d1cf61370575 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_42e74e34a6ebd851aebf07ffe1e30b49 = $(`<div id="html_42e74e34a6ebd851aebf07ffe1e30b49" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_c49e3580caa4b9124783d1cf61370575.setContent(html_42e74e34a6ebd851aebf07ffe1e30b49);
+            
+        
+
+        poly_line_b02c98c6ca5b9f05044877a04b3b361c.bindPopup(popup_c49e3580caa4b9124783d1cf61370575)
+        ;
+
+        
+    
+    
+            var poly_line_b19ac849fdb6c8e08460b6fd98bb712e = L.polyline(
+                [[33.9781766, -118.2803486], [33.9784588, -118.2803476], [33.9785929, -118.2803106], [33.9787497, -118.2802346], [33.9789177, -118.2802381], [33.9790135, -118.280265]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_9160d195d16a5542223e57124627509e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b95b23ad7d9ea38b9aa87a395fe377d0 = $(`<div id="html_b95b23ad7d9ea38b9aa87a395fe377d0" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_9160d195d16a5542223e57124627509e.setContent(html_b95b23ad7d9ea38b9aa87a395fe377d0);
+            
+        
+
+        poly_line_b19ac849fdb6c8e08460b6fd98bb712e.bindPopup(popup_9160d195d16a5542223e57124627509e)
+        ;
+
+        
+    
+    
+            var poly_line_ebd8402d226be4c82c2b0f2943a69aca = L.polyline(
+                [[33.9790135, -118.280265], [33.9794125, -118.2803567], [33.9798235, -118.280358]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_53653e794254431adc4755c11e595597 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ddccc804bcaa80169bb983c71e669474 = $(`<div id="html_ddccc804bcaa80169bb983c71e669474" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_53653e794254431adc4755c11e595597.setContent(html_ddccc804bcaa80169bb983c71e669474);
+            
+        
+
+        poly_line_ebd8402d226be4c82c2b0f2943a69aca.bindPopup(popup_53653e794254431adc4755c11e595597)
+        ;
+
+        
+    
+    
+            var poly_line_8295e5c85a3917b3bee2593072d1f884 = L.polyline(
+                [[33.9798235, -118.280358], [33.9802369, -118.2803263], [33.9804659, -118.2803087], [33.9806522, -118.2802509]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_93c18b0fabe4dbc065ef451cbe2f9f4a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c5bb0364766536e449beccfd8e3a9de2 = $(`<div id="html_c5bb0364766536e449beccfd8e3a9de2" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_93c18b0fabe4dbc065ef451cbe2f9f4a.setContent(html_c5bb0364766536e449beccfd8e3a9de2);
+            
+        
+
+        poly_line_8295e5c85a3917b3bee2593072d1f884.bindPopup(popup_93c18b0fabe4dbc065ef451cbe2f9f4a)
+        ;
+
+        
+    
+    
+            var poly_line_f0d43c8ec44e55e9417ede6aeba09c6f = L.polyline(
+                [[33.9806522, -118.2802509], [33.9808629, -118.2802142], [33.9810605, -118.2802109], [33.9813433, -118.2802061]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_c0e3f830bb853818449743120f80fac6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b2ec7320cf9a2b567a2ecfb8afc6ef9b = $(`<div id="html_b2ec7320cf9a2b567a2ecfb8afc6ef9b" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_c0e3f830bb853818449743120f80fac6.setContent(html_b2ec7320cf9a2b567a2ecfb8afc6ef9b);
+            
+        
+
+        poly_line_f0d43c8ec44e55e9417ede6aeba09c6f.bindPopup(popup_c0e3f830bb853818449743120f80fac6)
+        ;
+
+        
+    
+    
+            var poly_line_c5f9444d708e701da722257afd1759e3 = L.polyline(
+                [[-118.2802061, 33.9813433], [-118.2801842, 33.9817865]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_d991a9f8609d5d0994e5f7a8a923637e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e2e5748165b478ce1873cdbde4870ec4 = $(`<div id="html_e2e5748165b478ce1873cdbde4870ec4" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_d991a9f8609d5d0994e5f7a8a923637e.setContent(html_e2e5748165b478ce1873cdbde4870ec4);
+            
+        
+
+        poly_line_c5f9444d708e701da722257afd1759e3.bindPopup(popup_d991a9f8609d5d0994e5f7a8a923637e)
+        ;
+
+        
+    
+    
+            var poly_line_8ec6127e9315a17b53e01d6a98396db1 = L.polyline(
+                [[33.9817865, -118.2801842], [33.9820488, -118.2801478], [33.9821299, -118.2801759]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_989f21fae1cbba2e309191b0c0598d6d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9e4886937e19a868ac7395ef17bf3caf = $(`<div id="html_9e4886937e19a868ac7395ef17bf3caf" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_989f21fae1cbba2e309191b0c0598d6d.setContent(html_9e4886937e19a868ac7395ef17bf3caf);
+            
+        
+
+        poly_line_8ec6127e9315a17b53e01d6a98396db1.bindPopup(popup_989f21fae1cbba2e309191b0c0598d6d)
+        ;
+
+        
+    
+    
+            var poly_line_bee942ec6c1e69db2f0ae147d9871d1a = L.polyline(
+                [[33.9821299, -118.2801759], [33.9822801, -118.280153], [33.9823692, -118.2801419]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_f343364e833fe4ff663c1d1f3841f44f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_91d0db544b1d0ab187a190fe322a0462 = $(`<div id="html_91d0db544b1d0ab187a190fe322a0462" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_f343364e833fe4ff663c1d1f3841f44f.setContent(html_91d0db544b1d0ab187a190fe322a0462);
+            
+        
+
+        poly_line_bee942ec6c1e69db2f0ae147d9871d1a.bindPopup(popup_f343364e833fe4ff663c1d1f3841f44f)
+        ;
+
+        
+    
+    
+            var poly_line_573137a7ddd71470fc89cb0be7f2dd89 = L.polyline(
+                [[33.9823692, -118.2801419], [33.9825007, -118.280133], [33.9825951, -118.2801274], [33.9827902, -118.2801176], [33.9828384, -118.280115]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_43785a3794a9cb416e88beefe9030f7c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4ab4e24876050d4671a6c85ab9e47ead = $(`<div id="html_4ab4e24876050d4671a6c85ab9e47ead" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_43785a3794a9cb416e88beefe9030f7c.setContent(html_4ab4e24876050d4671a6c85ab9e47ead);
+            
+        
+
+        poly_line_573137a7ddd71470fc89cb0be7f2dd89.bindPopup(popup_43785a3794a9cb416e88beefe9030f7c)
+        ;
+
+        
+    
+    
+            var poly_line_a8c7935dd14f7a3f534b33ffac0b1977 = L.polyline(
+                [[33.9828384, -118.280115], [33.9832257, -118.2799898], [33.9832746, -118.2799749]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_c29123e52ee51f3082a474431bcbf699 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a58800649b1ff8ee3c08116eccaf2323 = $(`<div id="html_a58800649b1ff8ee3c08116eccaf2323" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_c29123e52ee51f3082a474431bcbf699.setContent(html_a58800649b1ff8ee3c08116eccaf2323);
+            
+        
+
+        poly_line_a8c7935dd14f7a3f534b33ffac0b1977.bindPopup(popup_c29123e52ee51f3082a474431bcbf699)
+        ;
+
+        
+    
+    
+            var poly_line_9f4a6fe82dac5b1aa7d337f0449f98e4 = L.polyline(
+                [[33.9832746, -118.2799749], [33.9837449, -118.2799682], [33.9842036, -118.2799672]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_4fa69c2301abd6155e5be00cdbcad541 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_144a31bbb0e3bd997475548af1a63537 = $(`<div id="html_144a31bbb0e3bd997475548af1a63537" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_4fa69c2301abd6155e5be00cdbcad541.setContent(html_144a31bbb0e3bd997475548af1a63537);
+            
+        
+
+        poly_line_9f4a6fe82dac5b1aa7d337f0449f98e4.bindPopup(popup_4fa69c2301abd6155e5be00cdbcad541)
+        ;
+
+        
+    
+    
+            var poly_line_af971e862335aa32086c1dbade0f74d9 = L.polyline(
+                [[33.9842036, -118.2799672], [33.9842045, -118.279389], [33.9842053, -118.278872], [33.9842062, -118.2783104]],
+                {"bubblingMouseEvents": true, "color": "#006837", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#006837", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_77e8c905abc1736bc8d0ae8c4732eb47 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_522c2bd4bde07d43ded7c1ebbf6a4292 = $(`<div id="html_522c2bd4bde07d43ded7c1ebbf6a4292" style="width: 100.0%; height: 100.0%;">West 61st Street<br>Risk: 0.00</div>`)[0];
+                popup_77e8c905abc1736bc8d0ae8c4732eb47.setContent(html_522c2bd4bde07d43ded7c1ebbf6a4292);
+            
+        
+
+        poly_line_af971e862335aa32086c1dbade0f74d9.bindPopup(popup_77e8c905abc1736bc8d0ae8c4732eb47)
+        ;
+
+        
+    
+    
+            var poly_line_dbafd5aef688e6d0ae10b5c8c8f4831a = L.polyline(
+                [[33.9842062, -118.2783104], [33.9846603, -118.2783111], [33.9848172, -118.2783113], [33.9851131, -118.2783118]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_78d24f1a27a99f82e7faeb2570519a2d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e05fde6d31af4db67d9118494b840ea5 = $(`<div id="html_e05fde6d31af4db67d9118494b840ea5" style="width: 100.0%; height: 100.0%;">South Broadway<br>Risk: 0.01</div>`)[0];
+                popup_78d24f1a27a99f82e7faeb2570519a2d.setContent(html_e05fde6d31af4db67d9118494b840ea5);
+            
+        
+
+        poly_line_dbafd5aef688e6d0ae10b5c8c8f4831a.bindPopup(popup_78d24f1a27a99f82e7faeb2570519a2d)
+        ;
+
+        
+    
+    
+            var poly_line_50843576417649a1264fc2b4d2084ffd = L.polyline(
+                [[33.9851131, -118.2783118], [33.9854274, -118.278307], [33.9855976, -118.2783045], [33.9860187, -118.2782981]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_2b95e1d3f797d76851add40807ef8f72 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_31029d9d4ddcb343eb2ca6b802cb62b5 = $(`<div id="html_31029d9d4ddcb343eb2ca6b802cb62b5" style="width: 100.0%; height: 100.0%;">South Broadway<br>Risk: 0.01</div>`)[0];
+                popup_2b95e1d3f797d76851add40807ef8f72.setContent(html_31029d9d4ddcb343eb2ca6b802cb62b5);
+            
+        
+
+        poly_line_50843576417649a1264fc2b4d2084ffd.bindPopup(popup_2b95e1d3f797d76851add40807ef8f72)
+        ;
+
+        
+    
+    
+            var poly_line_888c44517d1b97185a3c49bfb38205cf = L.polyline(
+                [[33.9860187, -118.2782981], [33.9862518, -118.2783004], [33.986467, -118.2783021], [33.9868608, -118.278306], [33.9869385, -118.278307]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_e9dd399a02cd204f006d39cef8df2ff3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_93f840425471459f98d4d1251ed89c62 = $(`<div id="html_93f840425471459f98d4d1251ed89c62" style="width: 100.0%; height: 100.0%;">South Broadway<br>Risk: 0.01</div>`)[0];
+                popup_e9dd399a02cd204f006d39cef8df2ff3.setContent(html_93f840425471459f98d4d1251ed89c62);
+            
+        
+
+        poly_line_888c44517d1b97185a3c49bfb38205cf.bindPopup(popup_e9dd399a02cd204f006d39cef8df2ff3)
+        ;
+
+        
+    
+    
+            var poly_line_623832ed0b3784d42492561e1483d39d = L.polyline(
+                [[33.9869385, -118.278307], [33.9872208, -118.2783056], [33.9886008, -118.2782996], [33.9886744, -118.2782987], [33.9888338, -118.278298], [33.9890792, -118.278297], [33.9891856, -118.278297]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_78007246da686d39d590064c96ea6944 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4f017dcb0a3a43518911ce0a9dc427e0 = $(`<div id="html_4f017dcb0a3a43518911ce0a9dc427e0" style="width: 100.0%; height: 100.0%;">South Broadway<br>Risk: 0.01</div>`)[0];
+                popup_78007246da686d39d590064c96ea6944.setContent(html_4f017dcb0a3a43518911ce0a9dc427e0);
+            
+        
+
+        poly_line_623832ed0b3784d42492561e1483d39d.bindPopup(popup_78007246da686d39d590064c96ea6944)
+        ;
+
+        
+    
+    
+            var poly_line_e014b2e24c4dce060d1963ad1ee19c82 = L.polyline(
+                [[33.9891856, -118.278297], [33.9893099, -118.2782973], [33.9893238, -118.2782977], [33.9894417, -118.278299], [33.9895531, -118.2783004], [33.9895998, -118.278301], [33.9897532, -118.2783029]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_4455900ef681f6ebb2bff439e408bbb8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a3a59bc42fcd50385304831e99947d54 = $(`<div id="html_a3a59bc42fcd50385304831e99947d54" style="width: 100.0%; height: 100.0%;">South Broadway<br>Risk: 0.01</div>`)[0];
+                popup_4455900ef681f6ebb2bff439e408bbb8.setContent(html_a3a59bc42fcd50385304831e99947d54);
+            
+        
+
+        poly_line_e014b2e24c4dce060d1963ad1ee19c82.bindPopup(popup_4455900ef681f6ebb2bff439e408bbb8)
+        ;
+
+        
+    
+    
+            var poly_line_64ca94d80ff6a1f4dde3cdec5473f3d6 = L.polyline(
+                [[33.9897532, -118.2783029], [33.989744, -118.2788704], [33.9897435, -118.2797827], [33.9897723, -118.2798877]],
+                {"bubblingMouseEvents": true, "color": "#006837", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#006837", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_fe2ba86dec4d529c4ab354395e00db98 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d84feb7576bacdd5b54c02c608b486ff = $(`<div id="html_d84feb7576bacdd5b54c02c608b486ff" style="width: 100.0%; height: 100.0%;">West 58th Street<br>Risk: 0.00</div>`)[0];
+                popup_fe2ba86dec4d529c4ab354395e00db98.setContent(html_d84feb7576bacdd5b54c02c608b486ff);
+            
+        
+
+        poly_line_64ca94d80ff6a1f4dde3cdec5473f3d6.bindPopup(popup_fe2ba86dec4d529c4ab354395e00db98)
+        ;
+
+        
+    
+    
+            var poly_line_c8d1b1ee70624e6fcd432ddfaa05e126 = L.polyline(
+                [[33.9897723, -118.2798877], [33.9898989, -118.2799729], [33.9905728, -118.2799879]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_7c1c145805651395a754bcd7690699c6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c5f2512def09cdc9759da7e512f50454 = $(`<div id="html_c5f2512def09cdc9759da7e512f50454" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_7c1c145805651395a754bcd7690699c6.setContent(html_c5f2512def09cdc9759da7e512f50454);
+            
+        
+
+        poly_line_c8d1b1ee70624e6fcd432ddfaa05e126.bindPopup(popup_7c1c145805651395a754bcd7690699c6)
+        ;
+
+        
+    
+    
+            var poly_line_6ff765b16f7e57cb9a3d8ef6dc37adde = L.polyline(
+                [[-118.2799879, 33.9905728], [-118.2800633, 33.9914845]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_7c9f3a837631fdf1b34830ea8b873683 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_da4f11de7dcbb261cbed899d6c67ce1a = $(`<div id="html_da4f11de7dcbb261cbed899d6c67ce1a" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_7c9f3a837631fdf1b34830ea8b873683.setContent(html_da4f11de7dcbb261cbed899d6c67ce1a);
+            
+        
+
+        poly_line_6ff765b16f7e57cb9a3d8ef6dc37adde.bindPopup(popup_7c9f3a837631fdf1b34830ea8b873683)
+        ;
+
+        
+    
+    
+            var poly_line_65be6ca7e6adeeb320a386a8db70221d = L.polyline(
+                [[-118.2800633, 33.9914845], [-118.2800632, 33.9923848]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_a13e4b6648a5aa6cb900a014a40fa6c9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8583133fae8b69759667e2a91fcd65b5 = $(`<div id="html_8583133fae8b69759667e2a91fcd65b5" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_a13e4b6648a5aa6cb900a014a40fa6c9.setContent(html_8583133fae8b69759667e2a91fcd65b5);
+            
+        
+
+        poly_line_65be6ca7e6adeeb320a386a8db70221d.bindPopup(popup_a13e4b6648a5aa6cb900a014a40fa6c9)
+        ;
+
+        
+    
+    
+            var poly_line_452e8ea4b19d7a38ecc0a2c9da77a7ad = L.polyline(
+                [[33.9923848, -118.2800632], [33.992511, -118.2800679], [33.992784, -118.2800398], [33.9932988, -118.2800437]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_1f30a9a8fbd3c9c46800f38af238383c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1c28b7e7b535c24835f474cdfce027f3 = $(`<div id="html_1c28b7e7b535c24835f474cdfce027f3" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_1f30a9a8fbd3c9c46800f38af238383c.setContent(html_1c28b7e7b535c24835f474cdfce027f3);
+            
+        
+
+        poly_line_452e8ea4b19d7a38ecc0a2c9da77a7ad.bindPopup(popup_1f30a9a8fbd3c9c46800f38af238383c)
+        ;
+
+        
+    
+    
+            var poly_line_9f6b484f2096734d7e6e592321b0f172 = L.polyline(
+                [[-118.2800437, 33.9932988], [-118.2800651, 33.9942195]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_dc27b9fc47e20b4438c1718566430288 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5cbf1ad072f6bbfa9aeac1e88dc3a5be = $(`<div id="html_5cbf1ad072f6bbfa9aeac1e88dc3a5be" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_dc27b9fc47e20b4438c1718566430288.setContent(html_5cbf1ad072f6bbfa9aeac1e88dc3a5be);
+            
+        
+
+        poly_line_9f6b484f2096734d7e6e592321b0f172.bindPopup(popup_dc27b9fc47e20b4438c1718566430288)
+        ;
+
+        
+    
+    
+            var poly_line_b88f0895c8b6d7a534e00d23f5faac06 = L.polyline(
+                [[-118.2800651, 33.9942195], [-118.2800748, 33.9950444]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_ef4a046cb990942978f04e9ec9957f7a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_71592cd977d26a588732fb485b22d980 = $(`<div id="html_71592cd977d26a588732fb485b22d980" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_ef4a046cb990942978f04e9ec9957f7a.setContent(html_71592cd977d26a588732fb485b22d980);
+            
+        
+
+        poly_line_b88f0895c8b6d7a534e00d23f5faac06.bindPopup(popup_ef4a046cb990942978f04e9ec9957f7a)
+        ;
+
+        
+    
+    
+            var poly_line_59bea35009287ac08e1a96dacd4f0bd7 = L.polyline(
+                [[-118.2800748, 33.9950444], [-118.2800822, 33.9957498]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_7871056a6d2bc52030a3a6cbc276405f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f919aac5fd7e4901e9ea69288378ad78 = $(`<div id="html_f919aac5fd7e4901e9ea69288378ad78" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_7871056a6d2bc52030a3a6cbc276405f.setContent(html_f919aac5fd7e4901e9ea69288378ad78);
+            
+        
+
+        poly_line_59bea35009287ac08e1a96dacd4f0bd7.bindPopup(popup_7871056a6d2bc52030a3a6cbc276405f)
+        ;
+
+        
+    
+    
+            var poly_line_ef999886201576b73de1ae235e4f63cc = L.polyline(
+                [[-118.2800822, 33.9957498], [-118.2800848, 33.9964955]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_83c11113a5ca00131df5b5b2bdae65c3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b1eb224460e3a198d2fa930a44c2463f = $(`<div id="html_b1eb224460e3a198d2fa930a44c2463f" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_83c11113a5ca00131df5b5b2bdae65c3.setContent(html_b1eb224460e3a198d2fa930a44c2463f);
+            
+        
+
+        poly_line_ef999886201576b73de1ae235e4f63cc.bindPopup(popup_83c11113a5ca00131df5b5b2bdae65c3)
+        ;
+
+        
+    
+    
+            var poly_line_702cef7dcd29d5ac9126212d92c782d9 = L.polyline(
+                [[-118.2800848, 33.9964955], [-118.2800844, 33.9968031]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_20e394b1a55c904153f8eb735818a833 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0d57b8de28d84bb46dad5a5f8c497497 = $(`<div id="html_0d57b8de28d84bb46dad5a5f8c497497" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_20e394b1a55c904153f8eb735818a833.setContent(html_0d57b8de28d84bb46dad5a5f8c497497);
+            
+        
+
+        poly_line_702cef7dcd29d5ac9126212d92c782d9.bindPopup(popup_20e394b1a55c904153f8eb735818a833)
+        ;
+
+        
+    
+    
+            var poly_line_f08eed8b9ea798eeeb74eeac09bc6cfa = L.polyline(
+                [[-118.2800844, 33.9968031], [-118.2800593, 33.9974065]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_b269177aaae2236588b998306962df69 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_cd0e29c6c4edc682237b300ec73482f5 = $(`<div id="html_cd0e29c6c4edc682237b300ec73482f5" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_b269177aaae2236588b998306962df69.setContent(html_cd0e29c6c4edc682237b300ec73482f5);
+            
+        
+
+        poly_line_f08eed8b9ea798eeeb74eeac09bc6cfa.bindPopup(popup_b269177aaae2236588b998306962df69)
+        ;
+
+        
+    
+    
+            var poly_line_225d4fa85cdd680834cb2c246eebd346 = L.polyline(
+                [[33.9974065, -118.2800593], [33.9978567, -118.2800544], [33.9983102, -118.2801555]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_d38f84329d543a581d786219da9d8e21 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_77de28f7dde21748eb2368da401d750b = $(`<div id="html_77de28f7dde21748eb2368da401d750b" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_d38f84329d543a581d786219da9d8e21.setContent(html_77de28f7dde21748eb2368da401d750b);
+            
+        
+
+        poly_line_225d4fa85cdd680834cb2c246eebd346.bindPopup(popup_d38f84329d543a581d786219da9d8e21)
+        ;
+
+        
+    
+    
+            var poly_line_663a3d3d9fdbbbd9f7834797607bbef1 = L.polyline(
+                [[-118.2801555, 33.9983102], [-118.2803801, 33.9992232]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_a7f40113392b145be6c2111210bd4019 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_08e0292821b866b61ec6510629c8fb74 = $(`<div id="html_08e0292821b866b61ec6510629c8fb74" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_a7f40113392b145be6c2111210bd4019.setContent(html_08e0292821b866b61ec6510629c8fb74);
+            
+        
+
+        poly_line_663a3d3d9fdbbbd9f7834797607bbef1.bindPopup(popup_a7f40113392b145be6c2111210bd4019)
+        ;
+
+        
+    
+    
+            var poly_line_3b11826452c120f403f5dac6d0c19084 = L.polyline(
+                [[-118.2803801, 33.9992232], [-118.2804721, 34.0001288]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_e4a5982f021c4dcde74311eb3145f3f8 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_407d135d9d8f8e2a07a20269240ecc61 = $(`<div id="html_407d135d9d8f8e2a07a20269240ecc61" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_e4a5982f021c4dcde74311eb3145f3f8.setContent(html_407d135d9d8f8e2a07a20269240ecc61);
+            
+        
+
+        poly_line_3b11826452c120f403f5dac6d0c19084.bindPopup(popup_e4a5982f021c4dcde74311eb3145f3f8)
+        ;
+
+        
+    
+    
+            var poly_line_7575c12c6dc51ae57f23d81b2ff778e2 = L.polyline(
+                [[34.0001288, -118.2804721], [34.0006081, -118.2804803], [34.0010643, -118.2804881]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_dc897a1ca258a3ec4d1938dbbb2266d3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_dc572c0c406d908ad5175ba3378f4c61 = $(`<div id="html_dc572c0c406d908ad5175ba3378f4c61" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_dc897a1ca258a3ec4d1938dbbb2266d3.setContent(html_dc572c0c406d908ad5175ba3378f4c61);
+            
+        
+
+        poly_line_7575c12c6dc51ae57f23d81b2ff778e2.bindPopup(popup_dc897a1ca258a3ec4d1938dbbb2266d3)
+        ;
+
+        
+    
+    
+            var poly_line_9d9b6aa9441199e2ea072b333db2a850 = L.polyline(
+                [[-118.2804881, 34.0010643], [-118.2805013, 34.0019732]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_21d86a05ffc02d7fafaee9d7699187f5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_035553f388f9b09ad787459de7598e65 = $(`<div id="html_035553f388f9b09ad787459de7598e65" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_21d86a05ffc02d7fafaee9d7699187f5.setContent(html_035553f388f9b09ad787459de7598e65);
+            
+        
+
+        poly_line_9d9b6aa9441199e2ea072b333db2a850.bindPopup(popup_21d86a05ffc02d7fafaee9d7699187f5)
+        ;
+
+        
+    
+    
+            var poly_line_3dd4054743cca892df39d2c9fa99cc47 = L.polyline(
+                [[-118.2805013, 34.0019732], [-118.280498, 34.0028653]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_a4ccc7cfbf596a59ab12be94163806d0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_043efc9e3a7088b4d99536c3d1587dbf = $(`<div id="html_043efc9e3a7088b4d99536c3d1587dbf" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_a4ccc7cfbf596a59ab12be94163806d0.setContent(html_043efc9e3a7088b4d99536c3d1587dbf);
+            
+        
+
+        poly_line_3dd4054743cca892df39d2c9fa99cc47.bindPopup(popup_a4ccc7cfbf596a59ab12be94163806d0)
+        ;
+
+        
+    
+    
+            var poly_line_3dd1f11fe2167847c9f0796806cba602 = L.polyline(
+                [[34.0028653, -118.280498], [34.0030599, -118.2805077], [34.0032884, -118.280519], [34.0033982, -118.2805588]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_6df7a82900d12d58905ef13d9d326278 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_67a84204ba0320415820a42a472e4724 = $(`<div id="html_67a84204ba0320415820a42a472e4724" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_6df7a82900d12d58905ef13d9d326278.setContent(html_67a84204ba0320415820a42a472e4724);
+            
+        
+
+        poly_line_3dd1f11fe2167847c9f0796806cba602.bindPopup(popup_6df7a82900d12d58905ef13d9d326278)
+        ;
+
+        
+    
+    
+            var poly_line_fba49a5c610471ac476aff61be04c050 = L.polyline(
+                [[-118.2805588, 34.0033982], [-118.2805471, 34.0037822]],
+                {"bubblingMouseEvents": true, "color": "#016937", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#016937", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 5}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_1af711ebb2bf28bea9e67e309c91cdc7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_374adb9d0af08b22f40858aacd7db65c = $(`<div id="html_374adb9d0af08b22f40858aacd7db65c" style="width: 100.0%; height: 100.0%;">South Grand Avenue<br>Risk: 0.00</div>`)[0];
+                popup_1af711ebb2bf28bea9e67e309c91cdc7.setContent(html_374adb9d0af08b22f40858aacd7db65c);
+            
+        
+
+        poly_line_fba49a5c610471ac476aff61be04c050.bindPopup(popup_1af711ebb2bf28bea9e67e309c91cdc7)
+        ;
+
+        
+    
+    
+            var poly_line_826118e184c6e14c0fbe2e386e36dcba = L.polyline(
+                [[33.9746526, -118.2802733], [33.9747999, -118.280274], [33.9750384, -118.2802755]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_b82bc9efa27ef1df60e186473e1197df = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8b94bc01bc9fd425f03d6e197fd22de9 = $(`<div id="html_8b94bc01bc9fd425f03d6e197fd22de9" style="width: 100.0%; height: 100.0%;">Fastest: South Grand Avenue</div>`)[0];
+                popup_b82bc9efa27ef1df60e186473e1197df.setContent(html_8b94bc01bc9fd425f03d6e197fd22de9);
+            
+        
+
+        poly_line_826118e184c6e14c0fbe2e386e36dcba.bindPopup(popup_b82bc9efa27ef1df60e186473e1197df)
+        ;
+
+        
+    
+    
+            var poly_line_8a41d2c220c885c8969c616d41fa266b = L.polyline(
+                [[33.9750384, -118.2802755], [33.9753004, -118.2803341], [33.9753315, -118.2803399], [33.975515, -118.2803759], [33.9757055, -118.2803879], [33.9761454, -118.2803908], [33.9762981, -118.2803918], [33.9765976, -118.2804216], [33.9771046, -118.2804673], [33.9774454, -118.280495], [33.9776494, -118.2805277], [33.9783848, -118.2806198]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_c70efd35ff1d83ca6d0a88b10d055128 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0e779b60b5322ca2b5b2c0246de51d83 = $(`<div id="html_0e779b60b5322ca2b5b2c0246de51d83" style="width: 100.0%; height: 100.0%;">Fastest: Unnamed Road</div>`)[0];
+                popup_c70efd35ff1d83ca6d0a88b10d055128.setContent(html_0e779b60b5322ca2b5b2c0246de51d83);
+            
+        
+
+        poly_line_8a41d2c220c885c8969c616d41fa266b.bindPopup(popup_c70efd35ff1d83ca6d0a88b10d055128)
+        ;
+
+        
+    
+    
+            var poly_line_eeef3552c760f9369f9f5a9f2d50d8d1 = L.polyline(
+                [[33.9783848, -118.2806198], [33.978907, -118.2806201], [33.9790885, -118.2806188]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_6ee97026842b25df50a26de58eb43ddf = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7cf17cc06447631fecd4487da51cff73 = $(`<div id="html_7cf17cc06447631fecd4487da51cff73" style="width: 100.0%; height: 100.0%;">Fastest: Harbor Freeway</div>`)[0];
+                popup_6ee97026842b25df50a26de58eb43ddf.setContent(html_7cf17cc06447631fecd4487da51cff73);
+            
+        
+
+        poly_line_eeef3552c760f9369f9f5a9f2d50d8d1.bindPopup(popup_6ee97026842b25df50a26de58eb43ddf)
+        ;
+
+        
+    
+    
+            var poly_line_484cc363390e74084607c74bda5e1746 = L.polyline(
+                [[33.9790885, -118.2806188], [33.97999, -118.2806231], [33.980466, -118.280611], [33.9809063, -118.2805838], [33.9814079, -118.28054], [33.9822629, -118.2804508], [33.9825002, -118.2804262], [33.9829581, -118.2803804], [33.9834152, -118.2803442], [33.9838354, -118.2803219], [33.985437, -118.2802806]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_0d86d78feb3825642aac543818387137 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ffd101bcc48627f0129e05f1547fd0cc = $(`<div id="html_ffd101bcc48627f0129e05f1547fd0cc" style="width: 100.0%; height: 100.0%;">Fastest: Harbor Freeway</div>`)[0];
+                popup_0d86d78feb3825642aac543818387137.setContent(html_ffd101bcc48627f0129e05f1547fd0cc);
+            
+        
+
+        poly_line_484cc363390e74084607c74bda5e1746.bindPopup(popup_0d86d78feb3825642aac543818387137)
+        ;
+
+        
+    
+    
+            var poly_line_d72c65d4f38e88ef9ce3be8ba4944cf4 = L.polyline(
+                [[33.985437, -118.2802806], [33.9859084, -118.2802727], [33.986084, -118.2802677], [33.9862048, -118.2802558]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_d5ab43c110a9075a067c4774e2b1881a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_856d75088657761c10f118c561fd99d2 = $(`<div id="html_856d75088657761c10f118c561fd99d2" style="width: 100.0%; height: 100.0%;">Fastest: Harbor Freeway</div>`)[0];
+                popup_d5ab43c110a9075a067c4774e2b1881a.setContent(html_856d75088657761c10f118c561fd99d2);
+            
+        
+
+        poly_line_d72c65d4f38e88ef9ce3be8ba4944cf4.bindPopup(popup_d5ab43c110a9075a067c4774e2b1881a)
+        ;
+
+        
+    
+    
+            var poly_line_b1f513dffd37e2be40a4a3af3dfa1523 = L.polyline(
+                [[33.9862048, -118.2802558], [33.9876591, -118.2802316], [33.9889279, -118.280203], [33.9894419, -118.2801911], [33.9900765, -118.2801809]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_fb7a045c4091da88d7f28862713066df = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_70b62a0999603c6081908f152fe9f0b4 = $(`<div id="html_70b62a0999603c6081908f152fe9f0b4" style="width: 100.0%; height: 100.0%;">Fastest: Harbor Freeway</div>`)[0];
+                popup_fb7a045c4091da88d7f28862713066df.setContent(html_70b62a0999603c6081908f152fe9f0b4);
+            
+        
+
+        poly_line_b1f513dffd37e2be40a4a3af3dfa1523.bindPopup(popup_fb7a045c4091da88d7f28862713066df)
+        ;
+
+        
+    
+    
+            var poly_line_3d0af085dbd1ed9c1d703b879e30c2a1 = L.polyline(
+                [[33.9900765, -118.2801809], [33.9906041, -118.2801913], [33.9952608, -118.2804298], [33.9964677, -118.2805129], [33.9992677, -118.280732]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_0c2ce887e6ecd87506d53907832ddfae = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3d6e27ef1d1eaddd15e15dbc3c68537e = $(`<div id="html_3d6e27ef1d1eaddd15e15dbc3c68537e" style="width: 100.0%; height: 100.0%;">Fastest: Harbor Freeway</div>`)[0];
+                popup_0c2ce887e6ecd87506d53907832ddfae.setContent(html_3d6e27ef1d1eaddd15e15dbc3c68537e);
+            
+        
+
+        poly_line_3d0af085dbd1ed9c1d703b879e30c2a1.bindPopup(popup_0c2ce887e6ecd87506d53907832ddfae)
+        ;
+
+        
+    
+    
+            var poly_line_0e2598c9b6d464c1200d38abb14af782 = L.polyline(
+                [[-118.280732, 33.9992677], [-118.2808618, 34.0006386]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_8f0265a970cf968730e0038054231a75 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_c4d1287074acd0e2544f802c405cd8ce = $(`<div id="html_c4d1287074acd0e2544f802c405cd8ce" style="width: 100.0%; height: 100.0%;">Fastest: Harbor Freeway</div>`)[0];
+                popup_8f0265a970cf968730e0038054231a75.setContent(html_c4d1287074acd0e2544f802c405cd8ce);
+            
+        
+
+        poly_line_0e2598c9b6d464c1200d38abb14af782.bindPopup(popup_8f0265a970cf968730e0038054231a75)
+        ;
+
+        
+    
+    
+            var poly_line_5dece49b2aeb09602effe64465b6d03a = L.polyline(
+                [[34.0006386, -118.2808618], [34.0008758, -118.280776], [34.0012483, -118.2807664], [34.0017706, -118.2807624], [34.002463, -118.2807087], [34.002906, -118.2806479], [34.003258, -118.2805981], [34.0033006, -118.2805921], [34.0033982, -118.2805588]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_fb240393293f2cd4b494599dba12e847 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5d232a58262255adc2610252a7b1b6e0 = $(`<div id="html_5d232a58262255adc2610252a7b1b6e0" style="width: 100.0%; height: 100.0%;">Fastest: Unnamed Road</div>`)[0];
+                popup_fb240393293f2cd4b494599dba12e847.setContent(html_5d232a58262255adc2610252a7b1b6e0);
+            
+        
+
+        poly_line_5dece49b2aeb09602effe64465b6d03a.bindPopup(popup_fb240393293f2cd4b494599dba12e847)
+        ;
+
+        
+    
+    
+            var poly_line_e1c0b13e3d4e51473f4d172ac7132c62 = L.polyline(
+                [[-118.2805588, 34.0033982], [-118.2805471, 34.0037822]],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "blue", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+        var popup_b53982334d37bd88707adb610a4da184 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_967c808880474467b3ef147209a41ee9 = $(`<div id="html_967c808880474467b3ef147209a41ee9" style="width: 100.0%; height: 100.0%;">Fastest: South Grand Avenue</div>`)[0];
+                popup_b53982334d37bd88707adb610a4da184.setContent(html_967c808880474467b3ef147209a41ee9);
+            
+        
+
+        poly_line_e1c0b13e3d4e51473f4d172ac7132c62.bindPopup(popup_b53982334d37bd88707adb610a4da184)
+        ;
+
+        
+    
+    
+            var marker_6f48fef5e194a5902c8a1f77e44ab418 = L.marker(
+                [33.974801, -118.279684],
+                {
+}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+            var icon_abb4e1d3467b4d71f938d60c6b2015e6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_6f48fef5e194a5902c8a1f77e44ab418.bindTooltip(
+                `<div>
+                     Start
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6f48fef5e194a5902c8a1f77e44ab418.setIcon(icon_abb4e1d3467b4d71f938d60c6b2015e6);
+            
+    
+            var marker_f125f5d9af6153d853629ee18272ce7a = L.marker(
+                [34.00369, -118.279837],
+                {
+}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+            var icon_acb9b4890485dd7d757fa57e679f5ea7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+            marker_f125f5d9af6153d853629ee18272ce7a.bindTooltip(
+                `<div>
+                     Destination
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f125f5d9af6153d853629ee18272ce7a.setIcon(icon_acb9b4890485dd7d757fa57e679f5ea7);
+            
+    
+            var tile_layer_fb1f77b2f762c981967b20ce1de092ba = L.tileLayer(
+                "https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Map tiles by \u003ca href=\"http://stamen.com\"\u003eStamen Design\u003c/a\u003e, \u003ca href=\"http://creativecommons.org/licenses/by/3.0\"\u003eCC BY 3.0\u003c/a\u003e \u0026mdash; Map data \u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_fb1f77b2f762c981967b20ce1de092ba.addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+            var tile_layer_af48b09a53b28af1470d648802fd2643 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_af48b09a53b28af1470d648802fd2643.addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+            var tile_layer_15eb8ac7e73f82bf53284bb40b3ec161 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_15eb8ac7e73f82bf53284bb40b3ec161.addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+        
+    
+            var layer_control_0e71d0ed1bc6b2c9f9a0e881d863e2a9_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_15eb8ac7e73f82bf53284bb40b3ec161,
+                    "stamenterrain" : tile_layer_fb1f77b2f762c981967b20ce1de092ba,
+                    "cartodbpositron" : tile_layer_af48b09a53b28af1470d648802fd2643,
+                },
+                overlays :  {
+                },
+            };
+            let layer_control_0e71d0ed1bc6b2c9f9a0e881d863e2a9 = L.control.layers(
+                layer_control_0e71d0ed1bc6b2c9f9a0e881d863e2a9_layers.base_layers,
+                layer_control_0e71d0ed1bc6b2c9f9a0e881d863e2a9_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_8d142c0b2f728b20cbfaceb40bab30cd);
+
+        
+</script>
+</html>
