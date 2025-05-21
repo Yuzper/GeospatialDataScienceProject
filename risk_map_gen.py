@@ -2,7 +2,7 @@ import os
 import pandas as pd
 import osmnx as ox
 from collections import defaultdict, deque
-
+import math
 
 def fill_missing_edge_names_with_bfs(G, edge_to_name, max_depth=None):
     """
@@ -67,10 +67,23 @@ def main():
     df = pd.read_csv('data/merged_data.csv')
 
     # --- 2. Load the road network graph ---
-    print("Downloading street network...")
-    G = ox.graph_from_place(
-        'Los Angeles, California, USA', network_type='drive'
-    )
+    places = [
+    "Los Angeles, California, USA",
+    "Santa Monica, California, USA",
+    "Beverly Hills, California, USA",
+    "West Hollywood, California, USA",
+    "Culver City, California, USA",
+    "Inglewood, California, USA",
+    "Glendale, California, USA",
+    "Burbank, California, USA",
+    "Pasadena, California, USA"]
+
+    if not os.path.exists("data/la.graphml"):
+        # Download the graph and save it to a file
+        G = ox.graph_from_place(places, network_type="drive")
+        ox.save_graphml(G, "data/la.graphml")
+    else:
+        G = ox.load_graphml("data/la.graphml")
 
     # --- 3. Match accidents to nearest road edges ---
     print("Matching accidents to roads...")
@@ -104,31 +117,37 @@ def main():
     # --- 8. Ensure output directory exists ---
     output_dir = 'risk_maps'
     os.makedirs(output_dir, exist_ok=True)
-
+    v_min, v_max = df['Visibility(mi)'].min(), df['Visibility(mi)'].max()
+    df['vis_weight'] = 1 + v_max - df['Visibility(mi)']
     # --- 9. Compute and export risk maps per condition ---
     for condition_filter in target_conditions:
         print(f"Processing condition: {condition_filter}")
 
         # Filter rows exactly matching the condition
-        df_filtered = df[df['conditions'] == condition_filter]
+        df_filtered = df[df['conditions'] == condition_filter].copy()
 
-        # Count accidents per road under this condition
-        road_risk_count = defaultdict(int)
-        for road in df_filtered['road_name']:
-            road_risk_count[road] += 1
-
+        
+        # Sum weights per road
+        road_risk_weight = defaultdict(float)
+        for road, weight in zip(df_filtered['road_name'], df_filtered['vis_weight']):
+            if not math.isnan(weight):
+                road_risk_weight[road] += weight
+                if road == 'Santa Monica Freeway':
+                    print('Road:', road, 'Weight:', weight, 'Total:', road_risk_weight[road])
+        
         # Normalize risk scores between 0 and 1
-        max_count = max(road_risk_count.values(), default=1)
+        max_weight = max(road_risk_weight.values(), default=1.0)
         road_risk_score = {
-            road: count / max_count
-            for road, count in road_risk_count.items()
+            road: weight / max_weight
+            for road, weight in road_risk_weight.items()
         }
 
-        # Build DataFrame and save
+         # Build DataFrame and save
         risk_df = pd.DataFrame(
             [{'road_name': road, 'risk_score': score}
-             for road, score in road_risk_score.items()]
+            for road, score in road_risk_score.items()]
         ).sort_values(by='risk_score', ascending=False)
+
 
         filename = os.path.join(
             output_dir,
