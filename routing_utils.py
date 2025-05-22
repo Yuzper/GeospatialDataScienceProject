@@ -197,9 +197,9 @@ def risk_to_color(risk):
     return f'#{int(r*255):02x}{int(g*255):02x}{int(b*255):02x}'
 
 
-def VisualizeMap(G, origin, dest):
-    edge_path = path_finding(G, "cost_risk", origin, dest)
-    edge_path_fast = path_finding(G, "cost_time", origin, dest)
+def VisualizeMap(G, origin, dest, weather):
+    edge_path = path_finding(G, "cost_risk", origin, dest, weather)
+    edge_path_fast = path_finding(G, "cost_time", origin, dest, weather)
     # Calculate total travel time for each route (in minutes)
     total_time_risk = sum(G.edges[u, v, key]["cost_time"] for u, v, key in edge_path) * 60
     total_time_fast = sum(G.edges[u, v, key]["cost_time"] for u, v, key in edge_path_fast) * 60

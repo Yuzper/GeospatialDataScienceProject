@@ -1,26 +1,20 @@
 import streamlit as st
 import folium
 from streamlit_folium import st_folium
-import osmnx as ox
-from shapely.geometry import LineString
-from routing import astar_route  # Your A* pathfinding function
+import routing_utils as ru
 
 # Load the graph once
 @st.cache_resource
-def load_graph():
-    return ox.graph_from_place("Los Angeles, California, USA", network_type="drive")
-
-G = load_graph()
-
-# Precompute costs (use real risk model here if available)
-for u, v, k, data in G.edges(keys=True, data=True):
-    length = data.get("length", 1.0)
-    data["cost_distance"] = length
-    data["cost_risk"] = length  # Replace with risk logic if needed
+def load_helper():
+    G = ru.load_graph()
+    return G
 
 # Streamlit interface
+st.info("Loading the graph...")
+st.info("On a first load this can take 2-5 minutes, depending on computer processing power...")
+G = load_helper()
 st.title("Click to Select Origin and Destination in LA")
-st.markdown("Click once to set the origin, and again to set the destination.")
+st.markdown("Click once inside the marked area to set the origin, and again to set the destination.")
 
 # Initialize state for clicked points
 if "origin" not in st.session_state:
@@ -28,11 +22,11 @@ if "origin" not in st.session_state:
 if "destination" not in st.session_state:
     st.session_state.destination = None
 
-# Base map
 map_center = [34.05, -118.25]  # Central LA
 m = folium.Map(location=map_center, zoom_start=12)
+m = ru.city_overlay_helper(m) # helper function to overlay LA city boundary
 
-# Display existing markers
+# Origin marker
 if st.session_state.origin:
     folium.Marker(
         st.session_state.origin,
@@ -40,6 +34,7 @@ if st.session_state.origin:
         icon=folium.Icon(color="green")
     ).add_to(m)
 
+# Destination marker
 if st.session_state.destination:
     folium.Marker(
         st.session_state.destination,
@@ -47,39 +42,35 @@ if st.session_state.destination:
         icon=folium.Icon(color="red")
     ).add_to(m)
 
+# Weather condition selection
+st.markdown("### Select Current Weather Condition")
+weather_options = [
+    "Clear",
+    "Partially cloudy",
+    "Overcast",
+    "Rain"
+]
+weather = st.selectbox("🌤️ Select current weather condition:", weather_options)
+
+
 # Run routing if both points are selected
 if st.session_state.origin and st.session_state.destination:
     try:
-        node_path, edge_path, road_names = astar_route(
-            G,
-            origin_point=st.session_state.origin,
-            destination_point=st.session_state.destination,
-            weight="cost_risk"
-        )
+        # Get the path for both cost_risk and cost_time
+        edge_path_risk = ru.path_finding(G, "cost_risk", st.session_state.origin, st.session_state.destination, weather=weather)
+        edge_path_time = ru.path_finding(G, "cost_time", st.session_state.origin, st.session_state.destination, weather=weather)
+        
+        # Calculate total travel time for each route (in minutes)
+        ru.plot_route(G, edge_path_risk, m, "cost_risk", st.session_state.origin, st.session_state.destination)
+        ru.plot_route(G, edge_path_time, m, "cost_time", st.session_state.origin, st.session_state.destination)
 
-        # Draw the route
-        for u, v, k in edge_path:
-            data = G.edges[u, v, k]
-            if "geometry" in data:
-                line = data["geometry"]
-            else:
-                point_u = (G.nodes[u]["y"], G.nodes[u]["x"])
-                point_v = (G.nodes[v]["y"], G.nodes[v]["x"])
-                line = LineString([point_u, point_v])
-
-            folium.PolyLine(
-                [(lat, lon) for lon, lat in line.coords],
-                color="red", weight=5, opacity=0.8
-            ).add_to(m)
-
-        st.markdown("### Route:")
-        st.write(road_names)
-
+        st.session_state.last_routed = (st.session_state.origin, st.session_state.destination, weather)
+        
     except Exception as e:
         st.error(f"Routing failed: {e}")
 
 # Show the map and get click data
-click_data = st_folium(m, height=500, width=700)
+click_data = st_folium(m, height=800, width=1200)
 
 # Handle new click
 if click_data and click_data.get("last_clicked"):
@@ -96,7 +87,7 @@ if click_data and click_data.get("last_clicked"):
         st.rerun()
 
 # Reset button
-if st.button("Reset"):
+if st.button("Reset - Clear Origin and Destination"):
     st.session_state.origin = None
     st.session_state.destination = None
     st.rerun()
