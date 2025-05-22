@@ -16,6 +16,14 @@ The loading of LA roads graph may take some time on the first load (2-5 minutes,
 
 To create a route, click anywhere within the marked LA area as origin spot, then another within as destination and it will calculate the fastest route (blue) and the route with minimal risk (green, can be orange and red segments if they are more risky).
 
+
+# In case you cant run the prototype locally:
+If you for some reason cant run the prototype locally here is a video demonstrating how it works.
+
+
+[![Watch the video](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=DJas3WE0Yzc)
+
+
 # Recreating report like images
 To recreate images like below:
 
