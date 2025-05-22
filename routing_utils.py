@@ -4,6 +4,7 @@ from routing import astar_route
 import folium
 import matplotlib.pyplot as plt
 import os
+import regex as re
 
 def load_graph():
     # Load the LA driving graph
@@ -54,7 +55,16 @@ def city_overlay_helper(m):
         ).add_to(m)
     return m
 
-
+def parse_maxspeed(value):
+    if isinstance(value, list):
+        value = value[0]
+    if isinstance(value, str):
+        match = re.search(r"\d+", value)
+        if match:
+            return float(match.group())
+    elif isinstance(value, (int, float)):
+        return float(value)
+    return None
 
 def get_edge_data(G, weather="Clear"): # Pick one of: Clear, Partially cloudy, Overcast, Rain
     risk_csv = os.path.join("risk_maps/", f"{weather.replace(', ', '_').replace(' ', '_')}.csv")
@@ -74,21 +84,14 @@ def get_edge_data(G, weather="Clear"): # Pick one of: Clear, Partially cloudy, O
         data["cost_risk"] = length * (1 + risk)
 
         # Time (travel time in hours)
-        maxspeed = data.get("maxspeed")
-        if isinstance(maxspeed, list):
-            try:
-                maxspeed = float(maxspeed[0])
-            except: maxspeed = None
-        try:
-            maxspeed = float(maxspeed)
-        except:
-            maxspeed = None
+        maxspeed = parse_maxspeed(data.get("maxspeed"))
         if not maxspeed or maxspeed <= 0:
             maxspeed = 50  # Default speed in km/h
 
         time_hours = (length / 1000) / maxspeed
         data["cost_time"] = time_hours
     return G
+
 
 def path_finding(G, cost_attribute, origin, dest, weather):
     G = get_edge_data(G, weather)
