@@ -80,7 +80,7 @@ def get_edge_data(G, weather="Clear"): # Pick one of: Clear, Partially cloudy, O
         name = data.get("name")
         if isinstance(name, list): name = name[0]
         if not name: name = "Unnamed Road"
-        risk = risk_lookup.get(name, 0.0)
+        risk = risk_lookup.get(name, 0.0) # 0.0 default fallback
         data["cost_risk"] = length * (1 + risk)
 
         # Time (travel time in hours)
@@ -193,7 +193,7 @@ def plot_route(G, edge_path, m, cost_attribute, origin, dest):
 # Define a color scale for risk (0.0 = green, 1.0+ = red)
 def risk_to_color(risk):
     # Clamp risk between 0 and 1
-    risk = min(max(risk, 0), 1)
+    risk = min(max(risk*10, 0), 1)
     # Use a color map (green to red)
     cmap = plt.get_cmap("RdYlGn_r")  # reverse of green→red
     r, g, b, _ = cmap(risk)
